@@ -1,12 +1,15 @@
 import './App.css';
-import Navbar from './Compenents/Navbar';
-import Hero from './Compenents/Hero';
+import Landing from './Compenents/Landing';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 function App() {
   return (
     <>
-      <Navbar/>
-      <Hero/>
+      <Router>
+        <Routes>
+          <Route path='/' Component={Landing} />
+        </Routes>
+      </Router>
     </>
   );
 }
