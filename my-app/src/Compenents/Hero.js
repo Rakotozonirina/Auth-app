@@ -6,6 +6,7 @@ import { Typography } from 'antd';
 const {Title} = Typography;
 
 const Hero = () => {
+    
 return (
     <main>
         <div className='hero-image'>
