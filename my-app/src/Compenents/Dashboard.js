@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { Row, Col } from 'antd';
 import { auth, logout } from '../firebase';
+import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space } from 'antd';
@@ -12,6 +13,10 @@ const style = {
     color: '#F0EB8D',
 }
 const Dashboard = () => {
+    const otherAuth = getAuth();
+    const otherUser = otherAuth.currentUser;
+    
+    
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     useEffect(() => {
@@ -23,12 +28,12 @@ const Dashboard = () => {
 return (
     <div>
         <Row>
-            <Col xs={9} sm={12} md={12} lg={12} xl={12} style={style} className='gutter-row'>
+            <Col xs={9} sm={12} md={12} lg={12} xl={14} style={style} className='gutter-row'>
                 <Space wrap>
                     <img src={Picture} style={{marginBlockStart:'0.6em'}} alt='The Logo'/>
                 </Space>
             </Col>
-            <Col xs={7} sm={6} md={8} lg={9} xl={9} style={style} className='gutter-row'></Col>
+            <Col xs={7} sm={6} md={8} lg={9} xl={7} style={style} className='gutter-row'> <Space wrap><Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button></Space></Col>
             <Col xs={8} sm={6} md={4} lg={3} xl={3} style={style} className='gutter-row'>
                 <Space wrap>
                     <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Log Out</Button>
