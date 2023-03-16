@@ -33,7 +33,8 @@ const Dashboard = () => {
         }
     }, [user, loading, navigate]);
 return (
-    <div>
+    <>
+    <header>
         <Row>
             <Col xs={9} sm={12} md={12} lg={12} xl={14} style={style} className='gutter-row'>
                 <Space wrap>
@@ -47,7 +48,16 @@ return (
                 </Space>
             </Col>
         </Row>
-    </div>
+    </header>
+    <main>
+        <div className='hero-dashboard'>
+            <div className='hero-content'>
+
+            </div>
+        </div>
+    </main>
+    </>
+    
 )
 }
 
