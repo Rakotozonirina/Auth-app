@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
 import { auth, logout } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Space, Divider } from 'antd';
+import { Button, Space, Divider, Modal } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone  } from '@ant-design/icons'
+import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone, ArrowRightOutlined  } from '@ant-design/icons'
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const style = {
@@ -17,6 +17,7 @@ const style = {
 }
 const {Title} = Typography;
 const Dashboard = () => {
+    const [modalOpen, setModalOpen] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     const otherAuth = getAuth();
@@ -59,6 +60,13 @@ return (
                 <Divider style={{color: '#F0EB8D'}}> <SmileTwoTone twoToneColor="#eb2f96" /> BIENVENUS <HeartTwoTone twoToneColor="#eb2f96" /> </Divider>
                 <Divider style={{color: '#F0EB8D'}}><Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.displayName}</Button>}</Space> <CheckCircleTwoTone twoToneColor="#52c41a" /> </Divider>
                 <Title level={5} style={{color:'#F0EB8D'}}>Cette application est crée pour facilité les transfères <br></br> <br></br> de données aux sein de l'Etablissement <br></br> <br></br> de l'Institu Universitaire de Gestion et de Management</Title>
+                <br></br> <br></br>
+                <Space wrap> <Button type='text' style={{color:'#F0EB8D'}} onClick={() => setModalOpen(true)}>Cliquez Ici <ArrowRightOutlined spin /> </Button> </Space>
+                <Modal title="Choisissez votre action" style={{textAlign: 'center'}} centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
+                    <p>some contents...</p>
+                    <p>some contents...</p>
+                    <p>some contents...</p>
+                </Modal>
             </div>
         </div>
     </main>
