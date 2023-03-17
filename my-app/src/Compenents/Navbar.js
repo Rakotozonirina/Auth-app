@@ -4,6 +4,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { Row, Col } from 'antd';
 import { Button, Space } from 'antd';
+import { LoginOutlined } from '@ant-design/icons';
 import Picture from '../Pictures/phosphor-logo-bold-1.svg'
 const style = {
     background: '#2D2727',
@@ -31,7 +32,7 @@ return (
             <Col xs={7} sm={6} md={8} lg={9} xl={8} style={style} className='gutter-row'></Col>
             <Col xs={8} sm={6} md={4} lg={3} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
-                    <Button type='text' style={{color: '#F0EB8D'}} onClick={signInWithGoogle} >Connexion</Button>
+                    <Button type='text' style={{color: '#F0EB8D'}} onClick={signInWithGoogle} >Connexion <LoginOutlined /></Button>
                 </Space>
             </Col>
         </Row>

@@ -7,6 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space, Divider } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone  } from '@ant-design/icons'
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const style = {
@@ -47,7 +48,7 @@ return (
             <Col xs={6} sm={6} md={6} lg={8} xl={6} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
             <Col xs={9} sm={6} md={6} lg={4} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
-                    <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion</Button>
+                    <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion <LogoutOutlined /></Button>
                 </Space>
             </Col>
         </Row>
@@ -55,8 +56,8 @@ return (
     <main>
         <div className='hero-dashboard'>
             <div className='hero-content'>
-                <Divider style={{color: '#F0EB8D'}}>BIENVENUS</Divider>
-                <Divider style={{color: '#F0EB8D'}}><Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.displayName}</Button>}</Space> </Divider>
+                <Divider style={{color: '#F0EB8D'}}> <SmileTwoTone twoToneColor="#eb2f96" /> BIENVENUS <HeartTwoTone twoToneColor="#eb2f96" /> </Divider>
+                <Divider style={{color: '#F0EB8D'}}><Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.displayName}</Button>}</Space> <CheckCircleTwoTone twoToneColor="#52c41a" /> </Divider>
                 <Title level={5} style={{color:'#F0EB8D'}}>Cette application est crée pour facilité les transfères <br></br> <br></br> de données aux sein de l'Etablissement <br></br> <br></br> de l'Institu Universitaire de Gestion et de Management</Title>
             </div>
         </div>
