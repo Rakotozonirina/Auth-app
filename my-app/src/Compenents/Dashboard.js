@@ -42,8 +42,8 @@ return (
                     <img src={Picture} style={{marginBlockStart:'0.6em'}} alt='The Logo'/>
                 </Space>
             </Col>
-            <Col xs={7} sm={6} md={8} lg={9} xl={7} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
-            <Col xs={8} sm={6} md={4} lg={3} xl={3} style={style} className='gutter-row'>
+            <Col xs={6} sm={6} md={6} lg={8} xl={6} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
+            <Col xs={9} sm={6} md={6} lg={4} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
                     <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion</Button>
                 </Space>
