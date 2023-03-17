@@ -44,7 +44,7 @@ return (
             <Col xs={7} sm={6} md={8} lg={9} xl={7} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
             <Col xs={8} sm={6} md={4} lg={3} xl={3} style={style} className='gutter-row'>
                 <Space wrap>
-                    <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Log Out</Button>
+                    <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion</Button>
                 </Space>
             </Col>
         </Row>

@@ -31,7 +31,7 @@ return (
             <Col xs={7} sm={6} md={8} lg={9} xl={9} style={style} className='gutter-row'></Col>
             <Col xs={8} sm={6} md={4} lg={3} xl={3} style={style} className='gutter-row'>
                 <Space wrap>
-                    <Button type='text' style={{color: '#F0EB8D'}} onClick={signInWithGoogle} >Log In</Button>
+                    <Button type='text' style={{color: '#F0EB8D'}} onClick={signInWithGoogle} >Connexion</Button>
                 </Space>
             </Col>
         </Row>
