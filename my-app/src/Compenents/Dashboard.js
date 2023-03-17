@@ -5,6 +5,7 @@ import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space } from 'antd';
+import { Scrollbars } from 'react-custom-scrollbars';
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const style = {
@@ -33,7 +34,7 @@ const Dashboard = () => {
         }
     }, [user, loading, navigate]);
 return (
-    <>
+    <Scrollbars style={{ height: '100vh' }}>
     <header>
         <Row>
             <Col xs={9} sm={12} md={12} lg={12} xl={14} style={style} className='gutter-row'>
@@ -56,7 +57,7 @@ return (
             </div>
         </div>
     </main>
-    </>
+    </Scrollbars>
     
 )
 }
