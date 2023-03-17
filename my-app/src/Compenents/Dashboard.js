@@ -4,7 +4,8 @@ import { auth, logout } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Space } from 'antd';
+import { Button, Space, Divider } from 'antd';
+import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
@@ -13,6 +14,7 @@ const style = {
     padding: '1.5rem 3rem',
     color: '#F0EB8D',
 }
+const {Title} = Typography;
 const Dashboard = () => {
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
@@ -53,7 +55,9 @@ return (
     <main>
         <div className='hero-dashboard'>
             <div className='hero-content'>
-
+                <Divider style={{color: '#F0EB8D'}}>BIENVENUS</Divider>
+                <Divider style={{color: '#F0EB8D'}}><Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.displayName}</Button>}</Space> </Divider>
+                <Title level={5} style={{color:'#F0EB8D'}}>Cette application est crée pour facilité les transfères <br></br> <br></br> de données aux sein de l'Etablissement <br></br> <br></br> de l'Institu Universitaire de Gestion et de Management</Title>
             </div>
         </div>
     </main>
