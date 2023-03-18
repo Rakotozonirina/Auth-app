@@ -18,6 +18,7 @@ const style = {
 const {Title} = Typography;
 const Dashboard = () => {
     const [modalOpen, setModalOpen] = useState(false);
+    const [ modalAjout, setModalAjout ] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     const otherAuth = getAuth();
@@ -64,10 +65,13 @@ return (
                 <Space wrap> <Button type='text' style={{color:'#F0EB8D'}} onClick={() => setModalOpen(true)}>Cliquez Ici <ArrowRightOutlined spin /> </Button> </Space>
                 <Modal title="Choisissez votre action" centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
                     <div className='modal-style'>
-                        <button className='btn'>Ajouter <UploadOutlined /> </button>
+                        <button className='btn' onClick={() => setModalAjout(true)}>Ajouter <UploadOutlined /> </button>
                         <button className='btn'>Télecharger <DownloadOutlined /> </button>
                         <button className='btn'>Régarder <FolderViewOutlined /></button>
                     </div>
+                    <Modal title="Ajouter le fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
+                        <p>Let's started</p>
+                    </Modal>
                 </Modal>
             </div>
         </div>
