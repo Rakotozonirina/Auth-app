@@ -4,7 +4,7 @@ import { auth, logout } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Space, Divider, Modal } from 'antd';
+import { Button, Space, Divider, Modal, Select } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
 import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined  } from '@ant-design/icons'
@@ -16,6 +16,9 @@ const style = {
     color: '#F0EB8D',
 }
 const {Title} = Typography;
+const handleChange = (value) => {
+    console.log(`selected ${value}`);
+}
 const Dashboard = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [ modalAjout, setModalAjout ] = useState(false);
@@ -70,7 +73,28 @@ return (
                         <button className='btn'>Régarder <FolderViewOutlined /></button>
                     </div>
                     <Modal title="Ajouter le fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
-                        <p>Let's started</p>
+                        <Space wrap>
+                            <Select
+                                defaultValue="Documents"
+                                style={{width: 120,}}
+                                onChange={handleChange}
+                                loading
+                                options={[
+                                    {
+                                        value: 'Video',
+                                        label: 'Video',
+                                    },
+                                    {
+                                        value: 'Documents',
+                                        label: 'Documents',
+                                    },
+                                    {
+                                        value: 'Image',
+                                        label: 'Image',
+                                    }
+                                ]}
+                            />
+                        </Space>
                     </Modal>
                 </Modal>
             </div>
