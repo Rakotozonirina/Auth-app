@@ -41,13 +41,13 @@ return (
     <Scrollbars style={{ height: '100vh' }}>
     <header>
         <Row>
-            <Col xs={9} sm={12} md={12} lg={12} xl={14} style={style} className='gutter-row'>
+            <Col xs={9} sm={12} md={12} lg={12} xl={12} style={style} className='gutter-row'>
                 <Space wrap>
                     <img src={Picture} style={{marginBlockStart:'0.6em'}} alt='The Logo'/>
                 </Space>
             </Col>
-            <Col xs={6} sm={6} md={6} lg={8} xl={6} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
-            <Col xs={9} sm={6} md={6} lg={4} xl={4} style={style} className='gutter-row'>
+            <Col xs={7} sm={6} md={8} lg={9} xl={8} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
+            <Col xs={8} sm={6} md={4} lg={3} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
                     <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion <LogoutOutlined /></Button>
                 </Space>
@@ -63,7 +63,7 @@ return (
                 <br></br> <br></br>
                 <Space wrap> <Button type='text' style={{color:'#F0EB8D'}} onClick={() => setModalOpen(true)}>Cliquez Ici <ArrowRightOutlined spin /> </Button> </Space>
                 <Modal title="Choisissez votre action" centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
-                    <div style={{textAlign: 'center',display: 'flex', justifyContent: 'space-around', }}>
+                    <div className='modal-style'>
                         <button className='btn'>Ajouter <UploadOutlined /> </button>
                         <button className='btn'>Télecharger <DownloadOutlined /> </button>
                         <button className='btn'>Régarder <FolderViewOutlined /></button>
