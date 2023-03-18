@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space, Divider, Modal } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone, ArrowRightOutlined  } from '@ant-design/icons'
+import { LogoutOutlined , HeartTwoTone, SmileTwoTone, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined  } from '@ant-design/icons'
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const style = {
@@ -62,10 +62,12 @@ return (
                 <Title level={5} style={{color:'#F0EB8D'}}>Cette application est crée pour facilité les transfères <br></br> <br></br> de données aux sein de l'Etablissement <br></br> <br></br> de l'Institu Universitaire de Gestion et de Management</Title>
                 <br></br> <br></br>
                 <Space wrap> <Button type='text' style={{color:'#F0EB8D'}} onClick={() => setModalOpen(true)}>Cliquez Ici <ArrowRightOutlined spin /> </Button> </Space>
-                <Modal title="Choisissez votre action" style={{textAlign: 'center'}} centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
-                    <p>some contents...</p>
-                    <p>some contents...</p>
-                    <p>some contents...</p>
+                <Modal title="Choisissez votre action" centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
+                    <div style={{textAlign: 'center',display: 'flex', justifyContent: 'space-around', }}>
+                        <button className='btn'>Ajouter <UploadOutlined /> </button>
+                        <button className='btn'>Télecharger <DownloadOutlined /> </button>
+                        <button className='btn'>Régarder <FolderViewOutlined /></button>
+                    </div>
                 </Modal>
             </div>
         </div>
