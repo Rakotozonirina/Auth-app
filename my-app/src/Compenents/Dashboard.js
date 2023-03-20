@@ -7,7 +7,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space, Divider, Modal, Select, message, Upload } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { LogoutOutlined , HeartTwoTone, SmileTwoTone, PlusOutlined, LoadingOutlined, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined  } from '@ant-design/icons'
+import { LogoutOutlined , HeartTwoTone, SmileTwoTone, PlusOutlined, LoadingOutlined, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined, FilePdfOutlined, FilePptOutlined, FireOutlined, FileZipOutlined  } from '@ant-design/icons'
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const { Option } = Select;
@@ -20,22 +20,6 @@ const {Title} = Typography;
 const handleChange = (value) => {
     console.log(`selected ${value}`);
 }
-/*const getBase64 = (img, callback) => {
-    const reader = new FileReader();
-    reader.addEventListener('load', () => callback(reader.result));
-    reader.readAsDataURL(img);
-}
-const beforeUpload = (file) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if(!isJpgOrPng){
-        message.error('You can only upload JPG/PNG file!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if(!isLt2M){
-        message.error('Image must smaller than 2MB!');
-    }
-    return isJpgOrPng && isLt2M;
-};*/
 const Dashboard = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [ modalAjout, setModalAjout ] = useState(false);
@@ -58,45 +42,6 @@ const Dashboard = () => {
             console.log("null variable");
         }
     }, [user, loading, navigate]);
-    /*const [connexion, setConnexion] = useState(false);
-
-    const [imageUrl, setImageUrl] = useState();
-    const handleChangement = (info) => {
-        if(info.file.status === 'uploading'){
-            setConnexion(true);
-            return;
-        }
-        if(info.file.status === 'done'){
-            // Get this url from response in real world.
-            getBase64(info.file.originFileObj, (url) => {
-                setConnexion(false);
-                setImageUrl(url);
-            });
-        }
-    };
-    const uploadButton = (
-        <div>
-            {connexion ? <LoadingOutlined /> : <PlusOutlined />}
-            <div
-            style={{
-            marginTop: 8,
-            }}
-            >
-                Upload
-            </div>
-        </div>
-    )*/
-    
-    /*const showButtonOfUploading = document.querySelector(".select");
-    let buttonOfUploading = showButtonOfUploading.getAttribute("options");
-    let doc = buttonOfUploading.find(resp => resp.value === "Documents");
-    if (doc) {
-        doc.addEventListener("click", () => {
-            alert("the value of the doc is find");
-        });
-    } else {
-        alert("not found the value of select");
-    }*/
 return (
     <Scrollbars style={{ height: '100vh' }}>
     <header>
@@ -128,42 +73,12 @@ return (
                         <button className='btn'>Télecharger <DownloadOutlined /> </button>
                         <button className='btn'>Régarder <FolderViewOutlined /></button>
                     </div>
-                    <Modal title="Ajouter le fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
-                        <Space wrap>
-                            <Select
-                                defaultValue="Documents"
-                                style={{width: 120,}}
-                                onChange={handleChange}
-                                loading
-                            >
-                                <Option value='Video'>Video</Option>
-                                <Option value='Documents'>Documents</Option>
-                                <Option value='Image'>Image</Option>
-                            </Select>
-                            {/*<Upload
-                                name="avatar"
-                                listType="picture-card"
-                                className="avatar-uploader"
-                                showUploadList={false}
-                                action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
-                                beforeUpload={beforeUpload}
-                                onChange={handleChangement}
-                            >
-                                {imageUrl ? (
-                                    <img
-                                    src={imageUrl}
-                                    alt="avatar"
-                                    style={{
-                                        width: '100%',
-                                    }}
-                                />
-                                ): (
-                                    uploadButton
-                                )}
-                            </Upload>*/}
-                            {
-                                
-                            }
+                    <Modal title="Choisir le type du fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
+                        <Space wrap style={{display: 'flex',justifyContent: 'flex-start',flexDirection: 'column'}}>
+                            <Button >Documents/pdf <FilePdfOutlined twoToneColor="#eb2f96"/></Button>
+                            <Button danger>Documents/point <FilePptOutlined twoToneColor="#FFD966"/></Button>
+                            <Button>Documents/zip <FileZipOutlined /></Button>
+                            <Button danger>Video <FireOutlined /></Button>
                         </Space>
                     </Modal>
                 </Modal>
