@@ -4,10 +4,10 @@ import { auth, logout } from '../firebase';
 import { getAuth } from 'firebase/auth';
 import { Navigate, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { Button, Space, Divider, Modal, Select, message, Upload } from 'antd';
+import { Button, Space, Divider, Modal, Select, message, Upload, Badge, Avatar } from 'antd';
 import { Typography } from 'antd';
 import { Scrollbars } from 'react-custom-scrollbars';
-import { LogoutOutlined , HeartTwoTone, SmileTwoTone, PlusOutlined, LoadingOutlined, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined, FilePdfOutlined, FilePptOutlined, FireOutlined, FileZipOutlined  } from '@ant-design/icons'
+import { UserOutlined, LogoutOutlined , HeartTwoTone, SmileTwoTone, PlusOutlined, LoadingOutlined, CheckCircleTwoTone, ArrowRightOutlined, UploadOutlined, DownloadOutlined, FolderViewOutlined, FilePdfOutlined, FilePptOutlined, FireOutlined, FileZipOutlined  } from '@ant-design/icons'
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import './dashboard.css';
 const { Option } = Select;
@@ -51,7 +51,7 @@ return (
                     <img src={Picture} style={{marginBlockStart:'0.6em'}} alt='The Logo'/>
                 </Space>
             </Col>
-            <Col xs={7} sm={6} md={8} lg={9} xl={8} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email}</Button>}</Space></Col>
+            <Col xs={7} sm={6} md={8} lg={9} xl={8} style={style} className='gutter-row'> <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email} <Space wrap><Badge status="success" dot><Avatar style={{backgroundColor: "transparent", marginBlockEnd: "0.5em"}} size={24} gap={4}  shape="circle" icon={<UserOutlined style={{color:"#F0EB8D"}}/>}/></Badge></Space> </Button>}</Space></Col>
             <Col xs={8} sm={6} md={4} lg={3} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
                     <Button type='text' style={{color: '#F0EB8D'}} onClick={logout} >Deconnexion <LogoutOutlined /></Button>
