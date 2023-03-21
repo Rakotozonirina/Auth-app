@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
 import { auth, logout } from '../firebase';
 import { getAuth } from 'firebase/auth';
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useHistory } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Button, Space, Divider, Modal, Select, message, Upload, Badge, Avatar } from 'antd';
 import { Typography } from 'antd';
@@ -42,6 +42,10 @@ const Dashboard = () => {
             console.log("null variable");
         }
     }, [user, loading, navigate]);
+    const enter = useNavigate();
+    const HandleLetgo = () => {
+        enter("/formpdf");
+    };
 return (
     <Scrollbars style={{ height: '100vh' }}>
     <header>
@@ -75,7 +79,7 @@ return (
                     </div>
                     <Modal title="Choisir le type du fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
                         <Space wrap style={{display: 'flex',justifyContent: 'flex-start',flexDirection: 'column'}}>
-                            <Button >Documents/pdf <FilePdfOutlined twoToneColor="#eb2f96"/></Button>
+                            <Button onClick={HandleLetgo}>Documents/pdf <FilePdfOutlined twoToneColor="#eb2f96"/></Button>
                             <Button danger>Documents/point <FilePptOutlined twoToneColor="#FFD966"/></Button>
                             <Button>Documents/zip <FileZipOutlined /></Button>
                             <Button danger>Video <FireOutlined /></Button>
