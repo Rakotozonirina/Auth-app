@@ -6,6 +6,8 @@ import { UserOutlined, UploadOutlined } from '@ant-design/icons';
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import { getAuth } from 'firebase/auth';
 import { Scrollbars } from 'react-custom-scrollbars';
+import { storage } from '../firebase';
+import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import './FormPdf.css';
 const style = {
     background: '#2D2727',
@@ -40,6 +42,7 @@ const FormPdf = () => {
         navigate(-1);
     };
     const [value, setValue] = useState('');
+    const [data, setData] = useState({});
 return (
     <Scrollbars style={{ height: '100vh' }}>
         <header>
@@ -71,6 +74,7 @@ return (
                 <UploadOutlined/>
                     Ajouter le fichier format PDF
                 </Dragger>
+                <Button>Ajouter</Button>
             </div>
         </div>
     </main>
