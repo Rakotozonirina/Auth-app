@@ -6,6 +6,8 @@ import "firebase/storage";
 import { getStorage } from "firebase/storage";
 import { ref, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -83,8 +85,8 @@ function UploadPdf() {
         <div>
             <progress value={progress} max="100" />
             <br />
-            <input accept=".pdf" type="file" onChange={handleChange} />
-            <button onClick={handleUpload}>Upload</button>
+            <input accept=".pdf" type="file" onChange={handleChange} className="form-control" style={{width: '30rem'}} />
+            <button onClick={handleUpload} type="button" className="btn btn-primary">Envoyer le pdf</button>
         </div>
     );
 }
