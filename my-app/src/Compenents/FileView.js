@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { storage } from '../firebase';
 import { ref, listAll } from 'firebase/storage';
+import { Button } from 'antd';
 const FileView = () => {
     const [files, setFiles] = useState([]);
     const fecthFiles = async () => {
@@ -18,7 +19,7 @@ const FileView = () => {
     }
 return (
     <div>
-        <button onClick={fecthFiles}>Show the list</button>
+        <Button type='text' style={{color: '#F0EB8D'}} onClick={fecthFiles}>Regarder les listes</Button>
         {files.map((val) => (
             <p>{val}</p>
         ))}

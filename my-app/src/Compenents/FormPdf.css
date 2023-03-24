@@ -17,8 +17,7 @@
 }
 @media (max-width: 65em) {
     .hero-content-form-pdf{
-        display: flex;
-        flex-direction: column;
-        margin: 0 1em;
+        display: grid;
+        justify-content: center;
     }
 }

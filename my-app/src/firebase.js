@@ -84,10 +84,10 @@ function UploadPdf() {
     };
     return(
         <>
-            <div className="container row d-flex justify-content-center mt-5">
-            <input accept=".pdf" type="file" onChange={handleChange} className="form-control col-9" style={{width: '30rem'}} />
-            <button onClick={handleUpload} type="button" className="btn btn-primary col">Envoyer le pdf</button>
-            <progress value={progress} max="100" className="row" />
+            <div className="container row d-flex d-sm-flex d-md-flex flex-column flex-sm-column flex-md-row gy-1 mt-5 justify-content-center" style={{width: '100%'}}>
+            <input accept=".pdf" type="file" onChange={handleChange} className="form-control col col-sm col-md"/>
+            <button onClick={handleUpload} type="button" className="btn btn-primary col col-sm col-md">Envoyer le pdf</button>
+            <progress value={progress} max="100" className="row"/>
             </div>
             <FileView/>
         </>
