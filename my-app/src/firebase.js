@@ -82,11 +82,10 @@ function UploadPdf() {
         );
     };
     return(
-        <div>
-            <progress value={progress} max="100" />
-            <br />
-            <input accept=".pdf" type="file" onChange={handleChange} className="form-control" style={{width: '30rem'}} />
-            <button onClick={handleUpload} type="button" className="btn btn-primary">Envoyer le pdf</button>
+        <div className="container row d-flex justify-content-center mt-5">
+            <input accept=".pdf" type="file" onChange={handleChange} className="form-control col-9" style={{width: '30rem'}} />
+            <button onClick={handleUpload} type="button" className="btn btn-primary col">Envoyer le pdf</button>
+            <progress value={progress} max="100" className="row" />
         </div>
     );
 }
