@@ -33,7 +33,7 @@ return (
                     </Space>
                 </Col>
                 <Col xs={7} sm={6} md={8} lg={9} xl={8} style={style} className='gutter-row'>
-                <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D'}}>{otherUser.email} <Space wrap><Badge status="success" dot><Avatar style={{backgroundColor: "transparent", marginBlockEnd: "0.5em"}} size={24} gap={4}  shape="circle" icon={<UserOutlined style={{color:"#F0EB8D"}}/>}/></Badge></Space> </Button>}</Space>
+                <Space wrap>{otherUser && <Button type='text' style={{color: '#F0EB8D', display: 'flex', justifyContent: 'center'}}>{otherUser.email} <Space wrap><Badge status="success" dot><Avatar style={{backgroundColor: "transparent", marginBlockStart: "-1em"}} size={24} gap={4}  shape="circle" icon={<UserOutlined style={{color:"#F0EB8D"}}/>}/></Badge></Space> </Button>}</Space>
                 </Col>
                 <Col xs={8} sm={6} md={4} lg={3} xl={4} style={style} className='gutter-row'>
                 <Space wrap>
