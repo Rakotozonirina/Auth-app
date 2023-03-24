@@ -8,6 +8,7 @@ import { ref, uploadBytesResumable } from "firebase/storage";
 import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
+import FileView from "./Compenents/FileView";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -82,11 +83,14 @@ function UploadPdf() {
         );
     };
     return(
-        <div className="container row d-flex justify-content-center mt-5">
+        <>
+            <div className="container row d-flex justify-content-center mt-5">
             <input accept=".pdf" type="file" onChange={handleChange} className="form-control col-9" style={{width: '30rem'}} />
             <button onClick={handleUpload} type="button" className="btn btn-primary col">Envoyer le pdf</button>
             <progress value={progress} max="100" className="row" />
-        </div>
+            </div>
+            <FileView/>
+        </>
     );
 }
 
