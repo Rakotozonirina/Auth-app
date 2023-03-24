@@ -24,7 +24,7 @@ return (
             <div className='hero-content'>
                 <Title level={3} style={{color:'#F0EB8D'}}>Welcome to Transfer Data!</Title>
                 <Title level={5} style={{color:'#F0EB8D'}}>Add, view, edit, and delete data (données) </Title>
-                <Space wrap> <Button type='text' style={{color:'#F0EB8D'}} onClick={signInWithGoogle} >CONNEXION<SyncOutlined spin style={{fontSize:'1rem'}} /></Button></Space>
+                <Space wrap> <Button type='text' style={{color:'#F0EB8D', display: 'grid', gridTemplateColumns: 'auto auto', justifyContent: 'center', alignContent: 'center'}} onClick={signInWithGoogle} >CONNEXION<SyncOutlined spin style={{fontSize:'1rem'}} /></Button></Space>
             </div>
         </div>
     </main>
