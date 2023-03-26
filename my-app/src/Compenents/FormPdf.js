@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from "react-router-dom";
 import { Row, Col } from 'antd';
-import { Button, Space, Badge, Avatar, Input, message, Upload } from 'antd';
-import { UserOutlined, UploadOutlined } from '@ant-design/icons';
+import { Button, Space, Badge, Avatar } from 'antd';
+import { UserOutlined} from '@ant-design/icons';
 import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 import { getAuth } from 'firebase/auth';
 import { Scrollbars } from 'react-custom-scrollbars';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js';
 //import { storage } from '../firebase';
 //import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 //import 'firebase/storage';
@@ -44,7 +46,7 @@ return (
     </header>
     <main>
         <div className='hero-form-pdf'>
-            <div className='hero-content-form-pdf'>
+            <div className='hero-content-form-pdf d-flex flex-column align-items-center'>
                 <UploadPdf/>
             </div>
         </div>
