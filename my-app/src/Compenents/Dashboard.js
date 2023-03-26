@@ -23,6 +23,7 @@ const handleChange = (value) => {
 const Dashboard = () => {
     const [modalOpen, setModalOpen] = useState(false);
     const [ modalAjout, setModalAjout ] = useState(false);
+    const [ modalTelecharger, setModalTelecharger ] = useState(false);
     const [user, loading, error] = useAuthState(auth);
     const navigate = useNavigate();
     const otherAuth = getAuth();
@@ -45,6 +46,10 @@ const Dashboard = () => {
     const enter = useNavigate();
     const HandleLetgo = () => {
         enter("/formpdf");
+    };
+    const enterToDownload = useNavigate();
+    const HandleDownload = () => {
+        enterToDownload("/download");
     };
 return (
     <Scrollbars style={{ height: '100vh' }}>
@@ -74,7 +79,7 @@ return (
                 <Modal title="Choisissez votre action" centered open={modalOpen} onOk={() => setModalOpen(false)} onCancel={() => setModalOpen(false)}>
                     <div className='modal-style'>
                         <button className='btn' style={{display: 'flex', justifyContent: 'center'}} onClick={() => setModalAjout(true)}>Ajouter <UploadOutlined style={{marginBlockStart: '0.3em', marginInlineStart: '0.4em'}}/> </button>
-                        <button className='btn' style={{display: 'flex', justifyContent: 'center'}}>Télecharger <DownloadOutlined style={{marginBlockStart: '0.3em', marginInlineStart: '0.4em'}}/> </button>
+                        <button className='btn' style={{display: 'flex', justifyContent: 'center'}} onClick={() => setModalTelecharger(true)}>Télecharger <DownloadOutlined style={{marginBlockStart: '0.3em', marginInlineStart: '0.4em'}}/> </button>
                         <button className='btn' style={{display: 'flex', justifyContent: 'center'}}>Régarder <FolderViewOutlined style={{marginBlockStart: '0.3em', marginInlineStart: '0.4em'}}/></button>
                     </div>
                     <Modal title="Choisir le type du fichier" centered open={modalAjout} onOk={() => setModalAjout(false)} onCancel={() => setModalAjout(false)}>
@@ -83,6 +88,14 @@ return (
                             <Button style={{display: 'flex', justifyContent: 'center'}} danger>Documents/point <FilePptOutlined twoToneColor="#FFD966" style={{marginBlockStart: '0.4em'}}/></Button>
                             <Button style={{display: 'flex', justifyContent: 'center'}}>Documents/zip <FileZipOutlined style={{marginBlockStart: '0.4em'}}/></Button>
                             <Button style={{display: 'flex', justifyContent: 'center'}} danger>Video <FireOutlined style={{marginBlockStart: '0.4em'}}/></Button>
+                        </Space>
+                    </Modal>
+                    <Modal title="Télécharger les fichiers" centered open={modalTelecharger} onOk={() => setModalTelecharger(false)} onCancel={() => setModalTelecharger(false)}>
+                    <Space wrap style={{display: 'flex',justifyContent: 'flex-start',flexDirection: 'column'}}>
+                            <Button style={{display: 'flex', justifyContent: 'center', color: '#FE6244'}} onClick={HandleDownload}>Documents/pdf <FilePdfOutlined style={{marginBlockStart: '0.4em'}}/></Button>
+                            <Button style={{display: 'flex', justifyContent: 'center', color: '#9E4784'}}>Documents/point <FilePptOutlined style={{marginBlockStart: '0.4em'}}/></Button>
+                            <Button style={{display: 'flex', justifyContent: 'center', color: '#FE6244'}}>Documents/zip <FileZipOutlined style={{marginBlockStart: '0.4em'}}/></Button>
+                            <Button style={{display: 'flex', justifyContent: 'center', color: '#9E4784'}}>Video <FireOutlined style={{marginBlockStart: '0.4em'}}/></Button>
                         </Space>
                     </Modal>
                 </Modal>
