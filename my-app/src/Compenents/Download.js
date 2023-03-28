@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { storage } from '../firebase';
-import { ref, list, getDownloadURL, getStorage } from 'firebase/storage';
+import { ref, list, getDownloadURL } from 'firebase/storage';
 import { Button } from 'antd';
 import { saveAs } from 'file-saver';
 const Download = () => {
@@ -12,7 +12,7 @@ const Download = () => {
     const [files, setFiles] = useState([]);
     const fecthFiles = async () => {
         const storageRef = ref(storage, `documents-pdf`);
-        const firstPage = list(storageRef, { maxResults: 5 } );
+        const firstPage = list(storageRef, { maxResults: 10 } );
         firstPage.then((res) => {
             res.items.forEach((itemRef) => {
                 setFiles(arr => [...arr, itemRef.fullPath]);
@@ -22,33 +22,13 @@ const Download = () => {
         });
         if(firstPage.nextPageToken){
             const secondPage = list(storageRef, {
-                maxResults: 5,
+                maxResults: 10,
                 pageToken: firstPage.nextPageToken,
             });
             console.log(secondPage.items);
             console.log(secondPage.prefixes);
         };
     };
-    /*const downloadFiles = () => {
-        //const storageRefference = ref(storage, 'gs://expen-e8cdc.appspot.com/documents-pdf');
-        //getDownloadURL(ref(storageRefference))
-        const storage = getStorage();
-        getDownloadURL(ref(storage, 'gs://expen-e8cdc.appspot.com/documents-pdf'))
-        .then((url) => {
-            const xhr = new XMLHttpRequest();
-            xhr.responseType = 'blob';
-            xhr.onload = (event) => {
-                const blob = xhr.response;
-            };
-            xhr.open('GET', url);
-            xhr.send();
-            console.log(url);
-        })
-        .catch((error) => {
-            // Handle any errors
-            alert(error);
-        });
-    }*/
     const downloadFiles = (file) => {
     const storageRef = ref(storage, file);
     getDownloadURL(storageRef)
