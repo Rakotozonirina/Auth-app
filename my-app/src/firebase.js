@@ -9,6 +9,7 @@ import { useState } from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import FileView from "./Compenents/FileView";
+import { message } from "antd";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -63,6 +64,7 @@ function UploadPdf() {
             setFile(e.target.files[0]);
         }
     };
+    const [messageApi, contextHolder] = message.useMessage();
     const handleUpload = () => {
         const uploadTask = uploadBytesResumable(storageRef, file);
         uploadTask.on(
@@ -70,24 +72,33 @@ function UploadPdf() {
             (snapshot) => {
                 const progress = Math.round((snapshot.bytesTransferred / snapshot.totalBytes) * 100);
                 setProgress(progress);
+                if(progress === 100){
+                    messageApi.open({
+                        type: 'success',
+                        content: 'le fichier est ajouter',
+                    });
+                    setProgress(0);
+                }
             },
             (error) => {
                 console.log(error);
             },
             () => {
-                storage.ref('documents-pdf').child(file.name).getDownloadURL()
-                .then((url) => {
-                    console.log(url);
-                });
+                
             }
         );
     };
+            /*const handleMessage = setTimeout(() => alert('Upload of the file'), 1000);
+    useEffect( () => {
+    }, []);*/
+    
     return(
         <>
             <div className="container row d-flex d-sm-flex d-md-flex flex-column flex-sm-column flex-md-row gy-1 mt-5 justify-content-center" style={{width: '100%'}}>
             <input accept=".pdf" type="file" onChange={handleChange} className="form-control col col-sm col-md"/>
-            <button onClick={handleUpload} type="button" className="btn btn-primary col col-sm col-md">Envoyer le pdf</button>
+            <button onClick={() => {handleUpload();}} type="button" className="btn btn-primary col col-sm col-md">Envoyer le pdf</button>
             </div>
+            {contextHolder}
             <progress value={progress} max="100" className="row align-center w-75"/>
             <FileView/>
         </>
