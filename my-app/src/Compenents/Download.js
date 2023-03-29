@@ -4,6 +4,8 @@ import { storage } from '../firebase';
 import { ref, list, getDownloadURL } from 'firebase/storage';
 import { Button } from 'antd';
 import { saveAs } from 'file-saver';
+import './Download.css';
+import Picture from '../Pictures/phosphor-logo-bold-1.svg';
 const Download = () => {
     const navigate = useNavigate();
     const HandleBack = () => {
@@ -46,15 +48,27 @@ const Download = () => {
     });
 };
 return (
-    <div>
-        <h2>Listes des fichiers PDF</h2>
+    <div className='main-content'>
+        <section>
+        <img src={Picture} alt='Logo'/>
+        </section>
+        <section>
+        <section>
         <Button type='text' onClick={HandleBack}>Retour</Button>
         <Button type='text' onClick={fecthFiles}>Listes</Button>
-                {files.map((file) => (
+        </section>
+        <section>
+        <h2>Listes des fichiers PDF</h2>
+        </section>
+        </section>
+        
+        <section>
+        {files.map((file) => (
                     <p key={file.id} onClick={() => downloadFiles(file)}>
                         {file}
                     </p>
-                ))}
+        ))}
+        </section>
     </div>
 )
 }
