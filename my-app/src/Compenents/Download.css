@@ -44,3 +44,11 @@
     109px 146px 244px rgba(0, 0, 0, 0.06)
 ;
 }
+.content-list{
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    place-items: stretch stretch;
+    column-gap: 10px;
+    row-gap: 15px;
+}

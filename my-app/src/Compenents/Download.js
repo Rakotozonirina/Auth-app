@@ -17,8 +17,8 @@ const Download = () => {
     };
     const [files, setFiles] = useState([]);
     const fecthFiles = async () => {
-        const storageRef = ref(storage, `documents-pdf`);
-        const firstPage = list(storageRef, { maxResults: 10 } );
+        const storageRef = ref(storage, `documents-pdf/${files}`);
+        const firstPage = list(storageRef);
         firstPage.then((res) => {
             res.items.forEach((itemRef) => {
                 setFiles(arr => [...arr, itemRef.name]);
@@ -36,21 +36,24 @@ const Download = () => {
         };
     };
     const downloadFiles = (file) => {
-    const storageRef = ref(storage, file);
-    getDownloadURL(storageRef)
-    .then((url) => {
-        fetch(url)
-        .then(res => res.blob())
-        .then(blob => {
-          const fileName = file.split('/').pop(); // Get the file name from the full path
-          saveAs(blob, fileName); // Download the file using `saveAs` from `file-saver`
-        })
-    })
-    .catch((error) => {
-      // Handle any errors
-        alert(error);
-    });
-};
+    const storageDown = ref(storage, `documents-pdf/${file}`)
+            getDownloadURL(storageDown)
+            .then((url) => {
+                fetch(url)
+                .then(res => res.blob())
+                .then(blob => {
+                const fileName = file.split('/').pop(); // Get the file name from the full path
+                saveAs(blob, fileName); // Download the file using `saveAs` from `file-saver`
+                })
+            })
+            .catch((error) => {
+            // Handle any errors
+                alert(error);
+            });
+    };
+    /*const starsRef = ref(storage, 'gs://expen-e8cdc.appspot.com/documents-pdf');
+    getDownloadURL(starsRef)
+    .then((url) => {})*/
 return (
     <Scrollbars style={{ height: '100vh' }}>
         <div className='main-content'>
@@ -69,12 +72,12 @@ return (
                         <section className='py-3 px-5 fs-1 fw-bolder'>
                             <h2>Listes des fichiers PDF</h2>
                         </section>
-                        <section>
+                        <section className='border content-list'>
                             {files.map((file) => (
-                                        <p key={file.id} className='fw-lighter'>
-                                            {file}
-                                            <VerticalAlignBottomOutlined onClick={() => downloadFiles(file)} style={{marginBlockStart: '0.4em'}}/>
-                                        </p>
+                                <p key={file.id} className='fw-lighter border'>
+                                    {file}
+                                    <VerticalAlignBottomOutlined onClick={() => downloadFiles(file)}  style={{marginBlockStart: '0.4em'}}/>
+                                </p>
                             ))}
                         </section>
                     </section>
