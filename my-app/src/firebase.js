@@ -10,11 +10,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import FileView from "./Compenents/FileView";
 import { message } from "antd";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
     apiKey: "AIzaSyD2F67niN2XGuausGHeohjlU_Y3tUaaQH0",
     authDomain: "expen-e8cdc.firebaseapp.com",
@@ -52,6 +47,7 @@ const signInWithGoogle = async () => {
         alert(err.message);
     }
 };
+
 const logout = () => {
     signOut(auth);
 };
@@ -88,10 +84,6 @@ function UploadPdf() {
             }
         );
     };
-            /*const handleMessage = setTimeout(() => alert('Upload of the file'), 1000);
-    useEffect( () => {
-    }, []);*/
-    
     return(
         <>
             <div className="container row d-flex d-sm-flex d-md-flex flex-column flex-sm-column flex-md-row gy-1 mt-5 justify-content-center" style={{width: '100%'}}>

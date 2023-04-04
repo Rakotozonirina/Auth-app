@@ -6,7 +6,7 @@ import { Button, Space, Modal } from 'antd';
 const FileView = () => {
     const [files, setFiles] = useState([]);
     const fecthFiles = async () => {
-        const storageRef = ref(storage, `documents-pdf`);
+        const storageRef = ref(storage, `documents-pdf/${files}`);
         const firstPage = list(storageRef);
         firstPage.then((res) => {
             res.items.forEach((itemRef) => {

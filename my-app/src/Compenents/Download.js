@@ -35,7 +35,12 @@ const Download = () => {
             console.log(secondPage.prefixes);
         };
     };
-    const downloadFiles = (file) => {
+    function FirstCall(){
+        alert(`Est ce-que tu vraiment vient de telécharger cette ${files.forEach((file) => {
+            alert(file.name)
+        })} pdf`);
+    }
+    const downloadFiles = (file, callback) => {
     const storageDown = ref(storage, `documents-pdf/${file}`)
             getDownloadURL(storageDown)
             .then((url) => {
@@ -50,10 +55,8 @@ const Download = () => {
             // Handle any errors
                 alert(error);
             });
+            callback();
     };
-    /*const starsRef = ref(storage, 'gs://expen-e8cdc.appspot.com/documents-pdf');
-    getDownloadURL(starsRef)
-    .then((url) => {})*/
 return (
     <Scrollbars style={{ height: '100vh' }}>
         <div className='main-content'>
@@ -76,7 +79,7 @@ return (
                             {files.map((file) => (
                                 <p key={file.id} className='fw-lighter border'>
                                     {file}
-                                    <VerticalAlignBottomOutlined onClick={() => downloadFiles(file)}  style={{marginBlockStart: '0.4em'}}/>
+                                    <VerticalAlignBottomOutlined onClick={() => downloadFiles(file, FirstCall())}  style={{marginBlockStart: '0.4em'}}/>
                                 </p>
                             ))}
                         </section>
